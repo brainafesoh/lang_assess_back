@@ -1,0 +1,32 @@
+{
+  "name": "lang_assess_back",
+  "version": "0.0.1",
+  "description": "lang_assess_back",
+  "keywords": [],
+  "author": "Afesoh Brain <brainafesoh@gmail.com>",
+  "license": "",
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "format": "npx prettier --write './**/*.{ts,md}'",
+    "dev": "nexus dev",
+    "build": "nexus build --no-bundle",
+    "start": "node .nexus/build/",
+    "prisma-migrate-save": "prisma migrate save --experimental",
+    "prisma-migrate-up": "prisma migrate up --create-db --experimental",
+    "prisma-seed": "ts-node ./prisma/seed.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "nexus": "0.26.1",
+    "nexus-plugin-prisma": "0.10.0"
+  },
+  "devDependencies": {
+    "dotenv": "8.2.0",
+    "prettier": "2.0.5"
+  },
+  "engines": {
+    "node": "12.18.0"
+  }
+}
