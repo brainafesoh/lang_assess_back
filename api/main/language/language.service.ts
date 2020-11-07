@@ -8,6 +8,7 @@ export class LanguageService {
    * allLanguages
    */
   public async allLanguages(): Promise<Language[]> {
-    return []
+    const allLanguages = this.languageRepo.findAll()
+    return allLanguages
   }
 }
