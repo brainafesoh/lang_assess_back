@@ -13,6 +13,7 @@
     "dev": "nexus dev",
     "build": "nexus build --no-bundle",
     "start": "node .nexus/build/",
+    "test": "jest",
     "prisma-migrate-save": "prisma migrate save --experimental",
     "prisma-migrate-up": "prisma migrate up --create-db --experimental",
     "prisma-seed": "ts-node ./prisma/seed.ts"
@@ -23,8 +24,11 @@
     "nexus-plugin-prisma": "0.10.0"
   },
   "devDependencies": {
+    "@types/jest": "26.0.0",
     "dotenv": "8.2.0",
-    "prettier": "2.0.5"
+    "jest": "26.0.1",
+    "prettier": "2.0.5",
+    "ts-jest": "26.1.0"
   },
   "engines": {
     "node": "12.18.0"
