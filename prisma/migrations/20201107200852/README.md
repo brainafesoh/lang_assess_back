@@ -45,5 +45,3 @@ migration 20201107185033..20201107200852
  }
  model Assessment {
 ```
-
-

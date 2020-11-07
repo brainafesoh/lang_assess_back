@@ -19,6 +19,11 @@ The `JSON` scalar type represents JSON objects as specified by [ECMA-404](http:/
 """
 scalar Json
 
+type Language {
+  code: String!
+  id: String!
+}
+
 type Query {
-  ok: Boolean!
+  allLanguages: [Language!]
 }
