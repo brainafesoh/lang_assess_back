@@ -19,6 +19,7 @@
     "prisma-seed": "ts-node ./prisma/seed.ts"
   },
   "dependencies": {
+    "@cospired/i18n-iso-languages": "^2.1.2",
     "cors": "^2.8.5",
     "nexus": "0.26.1",
     "nexus-plugin-prisma": "0.10.0"
