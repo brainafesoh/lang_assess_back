@@ -7,6 +7,36 @@ interface ApiError {
   message: String
 }
 
+type Assessment {
+  comprehensionLevel: AssessmentLevel!
+  id: String!
+  language: Language!
+  spokenLevel: AssessmentLevel!
+  writtenLevel: AssessmentLevel!
+}
+
+input AssessmentCI {
+  comprehensionLevel: AssessmentLevel!
+  languageId: String!
+  spokenLevel: AssessmentLevel!
+  writtenLevel: AssessmentLevel!
+}
+
+enum AssessmentLevel {
+  BEGINNER
+  EXCELLENT
+  FAIR
+  GOOD
+  VERY_GOOD
+}
+
+input AssessmentUI {
+  comprehensionLevel: AssessmentLevel
+  id: String!
+  spokenLevel: AssessmentLevel
+  writtenLevel: AssessmentLevel
+}
+
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
 `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
@@ -24,6 +54,14 @@ type Language {
   id: String!
 }
 
+type Mutation {
+  createAssessment(input: AssessmentCI!): Assessment
+  deleteAssessment(id: String!): Assessment
+  updateAssessment(input: AssessmentUI!): Assessment
+}
+
 type Query {
+  allAssessments: [Assessment!]
   allLanguages: [Language!]
+  assessmentById(id: String!): Assessment
 }
