@@ -8,7 +8,7 @@ schema.extendType({
     t.field("allLanguages", {
       type: "Language",
       list: true,
-      resolve: async (parent, args, ctx) => {
+      resolve: async (_parent, _args, ctx) => {
         try {
           const languageService = new LanguageService(
             new LanguageRepoPrisma({ instance: ctx.db }),
