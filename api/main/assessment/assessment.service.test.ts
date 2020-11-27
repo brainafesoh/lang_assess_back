@@ -1,4 +1,5 @@
-import { Assessment, Language } from "nexus-plugin-prisma/client"
+import { Assessment } from "nexus-plugin-prisma/client"
+import { AssessmentRepo } from "./assessment.repo"
 import { AssessmentService } from "./assessment.service"
 
 const assessmentArray: Assessment[] = [
@@ -17,7 +18,9 @@ const assessmentArray: Assessment[] = [
     spokenLevel: "EXCELLENT",
   },
 ]
-const assessmentService = new AssessmentService()
+// Init repo representing a DB access layer
+const assessmentRepo = new AssessmentRepo(async () => assessmentArray)
+const assessmentService = new AssessmentService(assessmentRepo)
 describe("allAssessments", () => {
   it("Should return an array of all language assessments found in DB", async () => {
     await expect(assessmentService.allAssessments()).resolves.toMatchObject(

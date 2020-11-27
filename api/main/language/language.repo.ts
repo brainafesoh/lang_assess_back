@@ -1,27 +1,40 @@
+import { log } from "nexus"
 import { Language } from "nexus-plugin-prisma/client"
 import { PrismaRepo } from "../../utils/prisma.repo"
 
 /**
  * Repository representing DB access layer for Language
  */
-export type LanguageRepo = {
-  findById(id: string): Promise<Language | null>
-  findAll(): Promise<Language[]>
+export class LanguageRepo {
+  constructor(
+    public findById: (id: string) => Promise<Language | null>,
+    public findAll: () => Promise<Language[]>,
+  ) {}
 }
 
 /**
- * Implementation of languageRepo using prisma
+ * Implementation of LanguageRepo using prisma
  */
 export class LanguageRepoPrisma extends PrismaRepo implements LanguageRepo {
   async findById(id: string) {
-    const language = await this.prisma.instance.language.findOne({
-      where: { id },
-    })
-    return language
+    try {
+      const language = await this.prisma.instance.language.findOne({
+        where: { id },
+      })
+      return language
+    } catch (error) {
+      log.error(error)
+      return error
+    }
   }
 
   async findAll() {
-    const allLanguages = await this.prisma.instance.language.findMany()
-    return allLanguages
+    try {
+      const allLanguages = await this.prisma.instance.language.findMany()
+      return allLanguages
+    } catch (error) {
+      log.error(error)
+      return error
+    }
   }
 }

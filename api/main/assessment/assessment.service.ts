@@ -1,12 +1,14 @@
 import { Assessment } from "nexus-plugin-prisma/client"
+import { AssessmentRepo } from "./assessment.repo"
 
 export class AssessmentService {
-  constructor() {}
+  constructor(private assessmentRepo: AssessmentRepo) {}
 
   /**
    * allAssessments
    */
   public async allAssessments(): Promise<Assessment[]> {
-    return []
+    const assessments = await this.assessmentRepo.findAll()
+    return assessments
   }
 }
