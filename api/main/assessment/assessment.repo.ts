@@ -1,4 +1,3 @@
-import { log } from "nexus"
 import { Assessment } from "nexus-plugin-prisma/client"
 import { PrismaRepo } from "../../utils/prisma.repo"
 
@@ -14,12 +13,7 @@ export class AssessmentRepo {
  */
 export class AssessmentRepoPrisma extends PrismaRepo implements AssessmentRepo {
   async findAll() {
-    try {
-      const assessments = await this.prisma.instance.assessment.findMany()
-      return assessments
-    } catch (error) {
-      log.error(error)
-      return error
-    }
+    const assessments = await this.prisma.instance.assessment.findMany()
+    return assessments
   }
 }

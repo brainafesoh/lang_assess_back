@@ -1,4 +1,4 @@
-import { log, schema } from "nexus"
+import { schema } from "nexus"
 import { AssessmentRepoPrisma } from "../assessment.repo"
 import { AssessmentService } from "../assessment.service"
 
@@ -15,15 +15,10 @@ schema.extendType({
       type: "Assessment",
       list: true,
       resolve: async (_parent, _args, ctx) => {
-        try {
-          const assessmentService = new AssessmentService(
-            new AssessmentRepoPrisma({ instance: ctx.db }),
-          )
-          return assessmentService.allAssessments()
-        } catch (error) {
-          log.error(error)
-          return error
-        }
+        const assessmentService = new AssessmentService(
+          new AssessmentRepoPrisma({ instance: ctx.db }),
+        )
+        return assessmentService.allAssessments()
       },
     })
 
@@ -34,14 +29,6 @@ schema.extendType({
       type: "Assessment",
       args: {
         id: schema.stringArg({ required: true }),
-      },
-      resolve: async (parent, args, ctx) => {
-        try {
-          return
-        } catch (error) {
-          log.error(error)
-          return error
-        }
       },
     })
   },

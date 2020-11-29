@@ -22,7 +22,8 @@
     "@cospired/i18n-iso-languages": "^2.1.2",
     "cors": "^2.8.5",
     "nexus": "0.26.1",
-    "nexus-plugin-prisma": "0.10.0"
+    "nexus-plugin-prisma": "0.10.0",
+    "nexus-plugin-shield": "^0.2.0"
   },
   "devDependencies": {
     "@types/jest": "26.0.0",

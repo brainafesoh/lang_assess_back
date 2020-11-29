@@ -1,4 +1,4 @@
-import { log, schema } from "nexus"
+import { schema } from "nexus"
 
 /**
  * Extend the general Graphql "Mutation" type in order
@@ -15,14 +15,6 @@ schema.extendType({
       args: {
         input: schema.arg({ type: "AssessmentCI", required: true }),
       },
-      resolve: async (parent, args, ctx) => {
-        try {
-          return
-        } catch (error) {
-          log.error(error)
-          return error
-        }
-      },
     })
 
     /**
@@ -33,14 +25,6 @@ schema.extendType({
       args: {
         input: schema.arg({ type: "AssessmentUI", required: true }),
       },
-      resolve: async (parent, args, ctx) => {
-        try {
-          return
-        } catch (error) {
-          log.error(error)
-          return error
-        }
-      },
     })
 
     /**
@@ -50,14 +34,6 @@ schema.extendType({
       type: "Assessment",
       args: {
         id: schema.stringArg({ required: true }),
-      },
-      resolve: async (parent, args, ctx) => {
-        try {
-          return
-        } catch (error) {
-          log.error(error)
-          return error
-        }
       },
     })
   },
